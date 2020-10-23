@@ -6,19 +6,48 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import sample.heart.GameLoop;
+import sample.heart.Grid;
+import sample.heart.Snake;
 
 public class Main extends Application {
 
     private static final int WIDTH = 400;
     private static final int HEIGHT = 600;
 
-    GraphicsContext context;
+    private GameLoop loop;
+    private Grid grid;
+    private GraphicsContext context;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         StackPane root = new StackPane();
         Canvas canvas = new Canvas(WIDTH,HEIGHT);
         context = canvas.getGraphicsContext2D();
+
+        canvas.setFocusTraversable(true);
+        canvas.setOnKeyPressed(e -> {
+            Snake snake = grid.getSnake();
+            if(loop.isKeyPressed()){
+                return;
+            }
+            switch (e.getCode()){
+                case UP:
+                    snake.setUp();
+                    break;
+                case DOWN:
+                    snake.setDown();
+                    break;
+                case LEFT:
+                    snake.setLeft();
+                    break;
+                case RIGHT:
+                    snake.setRight();
+                    break;
+            }
+        });
+
+        reset();
 
         root.getChildren().add(canvas);
 
@@ -30,8 +59,14 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        (new Thread(loop)).start();
     }
 
+    private void reset(){
+        grid = new Grid(WIDTH, HEIGHT);
+        loop = new GameLoop(grid, context);
+        Painter.paint(grid, context);
+    }
 
     public static void main(String[] args) {
         launch(args);
