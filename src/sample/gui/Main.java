@@ -31,19 +31,11 @@ public class Main extends Application {
             if(loop.isKeyPressed()){
                 return;
             }
-            switch (e.getCode()){
-                case UP:
-                    snake.setUp();
-                    break;
-                case DOWN:
-                    snake.setDown();
-                    break;
-                case LEFT:
-                    snake.setLeft();
-                    break;
-                case RIGHT:
-                    snake.setRight();
-                    break;
+            switch (e.getCode()) {
+                case UP -> snake.setUp();
+                case DOWN -> snake.setDown();
+                case LEFT -> snake.setLeft();
+                case RIGHT -> snake.setRight();
             }
         });
 
