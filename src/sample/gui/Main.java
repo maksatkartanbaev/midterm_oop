@@ -7,14 +7,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class Main extends Application {
 
     private static final int WIDTH = 400;
     private static final int HEIGHT = 600;
 
-    private GraphicsContext context;
+    GraphicsContext context;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
