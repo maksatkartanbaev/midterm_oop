@@ -1,6 +1,7 @@
 package sample.gui;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import sample.heart.Food;
 import sample.heart.Grid;
 import sample.heart.Point;
@@ -19,6 +20,9 @@ public class Painter {
         Snake snake = grid.getSnake();
         gc.setFill(Snake.COLOR);
         snake.getPoints().forEach(point -> paintPoint(point, gc));
+
+        gc.setFill(Color.WHITE);
+        gc.fillText("Score: " + snake.getPoints().size(), 10, 10);
 
     }
 

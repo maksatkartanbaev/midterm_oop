@@ -36,6 +36,7 @@ public class Main extends Application {
                 case DOWN -> snake.setDown();
                 case LEFT -> snake.setLeft();
                 case RIGHT -> snake.setRight();
+                case ESCAPE -> System.exit(0);
             }
         });
 

@@ -3,7 +3,7 @@ package sample.heart;
 import javafx.scene.canvas.GraphicsContext;
 import sample.gui.Painter;
 
-public class GameLoop implements Runnable{
+public class GameLoop implements Runnable {
     private final Grid grid;
     private final GraphicsContext context;
     private int frameRate;
@@ -12,7 +12,7 @@ public class GameLoop implements Runnable{
     private boolean paused;
     private boolean keyIsPressed;
 
-    public GameLoop(final Grid grid, final GraphicsContext context){
+    public GameLoop(final Grid grid, final GraphicsContext context) {
         this.grid = grid;
         this.context = context;
         frameRate = 15;
@@ -24,7 +24,7 @@ public class GameLoop implements Runnable{
 
     @Override
     public void run() {
-        while (running && !paused){
+        while (running && !paused) {
             float time = System.currentTimeMillis();
 
             keyIsPressed = false;
@@ -33,15 +33,16 @@ public class GameLoop implements Runnable{
 
             time = System.currentTimeMillis() - time;
 
-            if(time < interval){
+            if (time < interval) {
                 try {
                     Thread.sleep((long) (interval - time));
-                } catch (InterruptedException ignore){}
+                } catch (InterruptedException ignore) {
+                }
             }
         }
     }
 
-    public boolean isKeyPressed(){
+    public boolean isKeyPressed() {
         return keyIsPressed;
     }
 }

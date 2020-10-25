@@ -14,6 +14,7 @@ public class Snake {
     private Grid grid;
     private List<Point> points;
     private Point head;
+    private boolean safe;
 
     public Snake(Grid grid, Point initialPoint){
 
@@ -24,6 +25,7 @@ public class Snake {
         this.grid = grid;
         xVelocity = 0;
         yVelocity = 0;
+        safe = true;
 
     }
 
@@ -35,6 +37,7 @@ public class Snake {
 
     private void checkAndAdd(Point point){
         point = grid.wrap(point);
+        safe &= !points.contains(point);
         points.add(point);
         head = point;
     }
@@ -79,6 +82,20 @@ public class Snake {
 
     public Point getHead(){
         return head;
+    }
+
+    private void growTo(Point point){
+        length++;
+        checkAndAdd(point);
+    }
+
+    private boolean isSafe(){
+        return safe || length == 1;
+    }
+    public void extend(){
+        if (!isStill()){
+            growTo(head.translate(xVelocity,yVelocity));
+        }
     }
 
 }

@@ -36,6 +36,7 @@ public class Grid{
 
     public void update(){
         if(food.getPoint().equals(snake.getHead())){
+            snake.extend();
             food.setPoint(getRandomPoint());
         }
         snake.move();
