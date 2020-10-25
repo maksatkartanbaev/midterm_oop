@@ -77,4 +77,8 @@ public class Snake {
         yVelocity = 0;
     }
 
+    public Point getHead(){
+        return head;
+    }
+
 }

@@ -15,7 +15,7 @@ public class GameLoop implements Runnable{
     public GameLoop(final Grid grid, final GraphicsContext context){
         this.grid = grid;
         this.context = context;
-        frameRate = 20;
+        frameRate = 15;
         interval = 1000.0f / frameRate;
         running = true;
         paused = false;
