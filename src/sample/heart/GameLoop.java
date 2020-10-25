@@ -31,6 +31,11 @@ public class GameLoop implements Runnable {
             grid.update();
             Painter.paint(grid, context);
 
+            if(!grid.getSnake().isSafe()){
+                pause();
+                Painter.paintResetMessage(context);
+            }
+
             time = System.currentTimeMillis() - time;
 
             if (time < interval) {
@@ -44,5 +49,12 @@ public class GameLoop implements Runnable {
 
     public boolean isKeyPressed() {
         return keyIsPressed;
+    }
+
+    void pause(){
+        paused = true;
+    }
+    public boolean isPaused(){
+        return paused;
     }
 }

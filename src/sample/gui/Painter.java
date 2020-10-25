@@ -30,4 +30,8 @@ public class Painter {
         gc.fillRect(point.getX() * SIZE, point.getY() * SIZE, SIZE, SIZE);
     }
 
+    public static void paintResetMessage(GraphicsContext gc){
+        gc.setFill(Color.AQUAMARINE);
+        gc.fillText("Hit RETURN to start again.", 150,250);
+    }
 }

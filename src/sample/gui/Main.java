@@ -37,6 +37,12 @@ public class Main extends Application {
                 case LEFT -> snake.setLeft();
                 case RIGHT -> snake.setRight();
                 case ESCAPE -> System.exit(0);
+                case ENTER -> {
+                    if(loop.isPaused()){
+                        reset();
+                        (new Thread(loop)).start();
+                    }
+                }
             }
         });
 

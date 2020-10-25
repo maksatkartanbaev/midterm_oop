@@ -89,7 +89,7 @@ public class Snake {
         checkAndAdd(point);
     }
 
-    private boolean isSafe(){
+    public boolean isSafe(){
         return safe || length == 1;
     }
     public void extend(){
