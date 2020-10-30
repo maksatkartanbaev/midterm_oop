@@ -10,6 +10,10 @@ import sample.heart.GameLoop;
 import sample.heart.Grid;
 import sample.heart.Snake;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Main extends Application {
 
     private static final int WIDTH = 400;
@@ -21,6 +25,26 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        try{
+            File myObj = new File("Highscore.txt");
+            if(myObj.createNewFile()) {
+                System.out.println("File successfully created");
+                try{
+                    FileWriter myWriter = new FileWriter("Highscore.txt");
+                    myWriter.write('0');
+                    myWriter.close();
+                    System.out.println("Successfully wrote to file");
+                } catch (IOException e){
+                    System.out.println("Error");
+                    e.printStackTrace();
+                }
+            } else{
+                System.out.println("File already exists");
+            }
+        } catch (IOException e){
+            System.out.println("Error");
+            e.printStackTrace();
+        }
         StackPane root = new StackPane();
         Canvas canvas = new Canvas(WIDTH,HEIGHT);
         context = canvas.getGraphicsContext2D();

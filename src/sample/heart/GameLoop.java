@@ -33,7 +33,7 @@ public class GameLoop implements Runnable {
 
             if(!grid.getSnake().isSafe()){
                 pause();
-                Painter.paintResetMessage(context);
+                Painter.paintResetMessage(grid, context);
             }
 
             time = System.currentTimeMillis() - time;
